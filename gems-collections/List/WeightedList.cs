@@ -23,40 +23,25 @@ namespace gems_collections.List
         private readonly List<int> _units;
 
         /// <summary>
-        /// The percentage of each item.
-        /// </summary>
-        private List<float> _weights;
-
-        /// <summary>
         /// True to normalize.
         /// </summary>
         private bool _modified;
 
         /// <summary>
-        /// Constructor
+        /// The percentage of each item.
         /// </summary>
-        public WeightedList()
-        {
-            _items = new List<T>();
-            _units = new List<int>();
-            _weights = new List<float>();
-            _modified = false;
-        }
+        private List<float> _weights;
 
         /// <summary>
-        /// Adds an item to the collection.
+        /// Returns an enumerator that iterates through a collection.
         /// </summary>
-        /// <param name="pItem">The item</param>
-        /// <param name="pUnits">It's weight</param>
-        public void Add(T pItem, int pUnits)
+        /// <returns>
+        /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+        /// </returns>
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            if (pUnits <= 0)
-            {
-                throw new ArgumentOutOfRangeException("pUnits",@"Must be greater than 0.");
-            }
-            _items.Add(pItem);
-            _units.Add(pUnits);
-            _modified = true;
+            Noramlize();
+            return GetEnumerator();
         }
 
         /// <summary>
@@ -70,8 +55,19 @@ namespace gems_collections.List
             }
 
             int total = _units.Sum(pItem=>pItem);
-            float delta = 1.0f / (float)total;
+            float delta = 1.0f / total;
             _weights = (from u in _units select (float)u * delta).ToList();
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public WeightedList()
+        {
+            _items = new List<T>();
+            _units = new List<int>();
+            _weights = new List<float>();
+            _modified = false;
         }
 
         /// <summary>
@@ -87,21 +83,13 @@ namespace gems_collections.List
         }
 
         /// <summary>
-        /// Returns an enumerator that iterates through a collection.
-        /// </summary>
-        /// <returns>
-        /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
-        /// </returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            Noramlize();
-            return GetEnumerator();
-        }
-
-        /// <summary>
         /// Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </summary>
-        /// <param name="pItem">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param><exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.</exception>
+        /// <param name="pItem">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+        /// <exception cref="T:System.NotSupportedException">
+        /// The <see cref="T:System.Collections.Generic.ICollection`1"/> is
+        /// read-only.
+        /// </exception>
         public void Add(T pItem)
         {
             _items.Add(pItem);
@@ -112,7 +100,10 @@ namespace gems_collections.List
         /// <summary>
         /// Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </summary>
-        /// <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only. </exception>
+        /// <exception cref="T:System.NotSupportedException">
+        /// The <see cref="T:System.Collections.Generic.ICollection`1"/> is
+        /// read-only.
+        /// </exception>
         public void Clear()
         {
             _items.Clear();
@@ -125,7 +116,8 @@ namespace gems_collections.List
         /// Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"/> contains a specific value.
         /// </summary>
         /// <returns>
-        /// true if <paramref name="pItem"/> is found in the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false.
+        /// true if <paramref name="pItem"/> is found in the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise,
+        /// false.
         /// </returns>
         /// <param name="pItem">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
         public bool Contains(T pItem)
@@ -134,21 +126,40 @@ namespace gems_collections.List
         }
 
         /// <summary>
-        /// Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+        /// Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to an <see cref="T:System.Array"/>,
+        /// starting at a particular <see cref="T:System.Array"/> index.
         /// </summary>
-        /// <param name="pArray">The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see cref="T:System.Array"/> must have zero-based indexing.</param><param name="pArrayIndex">The zero-based index in <paramref name="pArray"/> at which copying begins.</param><exception cref="T:System.ArgumentNullException"><paramref name="pArray"/> is null.</exception><exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pArrayIndex"/> is less than 0.</exception><exception cref="T:System.ArgumentException">The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="pArrayIndex"/> to the end of the destination <paramref name="pArray"/>.</exception>
+        /// <param name="pArray">
+        /// The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements copied
+        /// from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see cref="T:System.Array"/> must have zero-based
+        /// indexing.
+        /// </param>
+        /// <param name="pArrayIndex">The zero-based index in <paramref name="pArray"/> at which copying begins.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="pArray"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pArrayIndex"/> is less than 0.</exception>
+        /// <exception cref="T:System.ArgumentException">
+        /// The number of elements in the source
+        /// <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from
+        /// <paramref name="pArrayIndex"/> to the end of the destination <paramref name="pArray"/>.
+        /// </exception>
         public void CopyTo(T[] pArray, int pArrayIndex)
         {
-            _items.CopyTo(pArray,pArrayIndex);
+            _items.CopyTo(pArray, pArrayIndex);
         }
 
         /// <summary>
         /// Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </summary>
         /// <returns>
-        /// true if <paramref name="pItem"/> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false. This method also returns false if <paramref name="pItem"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
+        /// true if <paramref name="pItem"/> was successfully removed from the
+        /// <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false. This method also returns false if
+        /// <paramref name="pItem"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </returns>
-        /// <param name="pItem">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param><exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.</exception>
+        /// <param name="pItem">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+        /// <exception cref="T:System.NotSupportedException">
+        /// The <see cref="T:System.Collections.Generic.ICollection`1"/> is
+        /// read-only.
+        /// </exception>
         public bool Remove(T pItem)
         {
             _modified = true;
@@ -179,7 +190,7 @@ namespace gems_collections.List
         /// <returns>
         /// true if the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only; otherwise, false.
         /// </returns>
-        public bool IsReadOnly 
+        public bool IsReadOnly
         {
             get { return false; }
         }
@@ -199,18 +210,29 @@ namespace gems_collections.List
         /// <summary>
         /// Inserts an item to the <see cref="T:System.Collections.Generic.IList`1"/> at the specified index.
         /// </summary>
-        /// <param name="pIndex">The zero-based index at which <paramref name="pItem"/> should be inserted.</param><param name="pItem">The object to insert into the <see cref="T:System.Collections.Generic.IList`1"/>.</param><exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pIndex"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.</exception><exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.</exception>
+        /// <param name="pIndex">The zero-based index at which <paramref name="pItem"/> should be inserted.</param>
+        /// <param name="pItem">The object to insert into the <see cref="T:System.Collections.Generic.IList`1"/>.</param>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">
+        /// <paramref name="pIndex"/> is not a valid index in the
+        /// <see cref="T:System.Collections.Generic.IList`1"/>.
+        /// </exception>
+        /// <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.</exception>
         public void Insert(int pIndex, T pItem)
         {
             _modified = true;
             _items.Insert(pIndex, pItem);
-            _units.Insert(pIndex,1);
+            _units.Insert(pIndex, 1);
         }
 
         /// <summary>
         /// Removes the <see cref="T:System.Collections.Generic.IList`1"/> item at the specified index.
         /// </summary>
-        /// <param name="pIndex">The zero-based index of the item to remove.</param><exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pIndex"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.</exception><exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.</exception>
+        /// <param name="pIndex">The zero-based index of the item to remove.</param>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">
+        /// <paramref name="pIndex"/> is not a valid index in the
+        /// <see cref="T:System.Collections.Generic.IList`1"/>.
+        /// </exception>
+        /// <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.</exception>
         public void RemoveAt(int pIndex)
         {
             _modified = true;
@@ -223,11 +245,35 @@ namespace gems_collections.List
         /// <returns>
         /// The element at the specified index.
         /// </returns>
-        /// <param name="pIndex">The zero-based index of the element to get or set.</param><exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pIndex"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.</exception><exception cref="T:System.NotSupportedException">The property is set and the <see cref="T:System.Collections.Generic.IList`1"/> is read-only.</exception>
+        /// <param name="pIndex">The zero-based index of the element to get or set.</param>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">
+        /// <paramref name="pIndex"/> is not a valid index in the
+        /// <see cref="T:System.Collections.Generic.IList`1"/>.
+        /// </exception>
+        /// <exception cref="T:System.NotSupportedException">
+        /// The property is set and the
+        /// <see cref="T:System.Collections.Generic.IList`1"/> is read-only.
+        /// </exception>
         public T this[int pIndex]
         {
             get { return _items[pIndex]; }
             set { _items[pIndex] = value; }
+        }
+
+        /// <summary>
+        /// Adds an item to the collection.
+        /// </summary>
+        /// <param name="pItem">The item</param>
+        /// <param name="pUnits">It's weight</param>
+        public void Add(T pItem, int pUnits)
+        {
+            if (pUnits <= 0)
+            {
+                throw new ArgumentOutOfRangeException("pUnits", @"Must be greater than 0.");
+            }
+            _items.Add(pItem);
+            _units.Add(pUnits);
+            _modified = true;
         }
 
         /// <summary>
