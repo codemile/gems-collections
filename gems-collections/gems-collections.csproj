@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dictionary\AutoDictionary.cs" />
+    <Compile Include="Enumerable\Enumerated.cs" />
+    <Compile Include="Enumerable\Strings.cs" />
     <Compile Include="List\LimitedList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dictionary\ReadOnlyDictionary.cs" />
@@ -50,6 +52,7 @@
   <ItemGroup>
     <None Include="README.md" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
