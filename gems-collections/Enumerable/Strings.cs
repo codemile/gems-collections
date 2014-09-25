@@ -8,9 +8,9 @@ namespace gems_collections.Enumerable
         /// <summary>
         /// Only strings with a non-whitespace value.
         /// </summary>
-        public static IEnumerable<string> NotNullOrEmpty(this IEnumerable<string> pStrings)
+        public static IEnumerable<string> IsNullOrWhiteSpace(this IEnumerable<string> pStrings)
         {
-            return pStrings.Where(pItem=>!string.IsNullOrWhiteSpace(pItem));
+            return pStrings.Where(string.IsNullOrWhiteSpace);
         }
 
         /// <summary>

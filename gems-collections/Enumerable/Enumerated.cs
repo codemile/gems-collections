@@ -1,13 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using gems_collections.Comparers;
 
 namespace gems_collections.Enumerable
 {
     public static class Enumerated
     {
-        public static IEnumerable<T> NotNull<T>(this IEnumerable<T> pThis) where T : class
+        /// <summary>
+        /// Distinct by a value.
+        /// </summary>
+        public static IEnumerable<T> Distinct<T, TKey>(this IEnumerable<T> pList, Func<T, TKey> pValue) 
         {
-            return pThis.Where(pItem=>pItem != null);
+            return pList.Distinct(new EqualComparer<T, TKey>(pValue));
         }
 
         /// <summary>
@@ -16,6 +21,11 @@ namespace gems_collections.Enumerable
         public static IEnumerable<T> ExceptThese<T>(this IEnumerable<T> pThis, IEnumerable<T> pThese)
         {
             return pThis.Where(pItem=>!pThese.Contains(pItem));
+        }
+
+        public static IEnumerable<T> NotNull<T>(this IEnumerable<T> pThis) where T : class
+        {
+            return pThis.Where(pItem=>pItem != null);
         }
 
         /// <summary>

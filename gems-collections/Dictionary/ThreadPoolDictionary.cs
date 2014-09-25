@@ -10,7 +10,7 @@ namespace gems_collections.Dictionary
     /// When a thread is finished it should call the Release() method
     /// to free memory.
     /// </summary>
-    public class ThreadDictionary<TKey, TValue>
+    public class ThreadPoolDictionary<TKey, TValue>
     {
         /// <summary>
         /// The inner dictionary
@@ -36,7 +36,7 @@ namespace gems_collections.Dictionary
         /// <summary>
         /// Constructor
         /// </summary>
-        public ThreadDictionary()
+        public ThreadPoolDictionary()
         {
             _value = new Dictionary<int, Dictionary<TKey, TValue>>();
         }
