@@ -1,4 +1,4 @@
-﻿namespace gems_collections.Dictionary
+﻿namespace GemsCollections.Dictionary
 {
     /// <summary>
     /// Makes it easy to count the number of occurrences of a key in the form of a dictionary.

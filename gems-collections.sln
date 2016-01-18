@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gems-collections", "gems-collections\gems-collections.csproj", "{90E971D8-12B5-431D-BE55-FAF6A7F03179}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gems-collections-test", "gems-collections-test\gems-collections-test.csproj", "{3265A053-0F6D-41B1-9B8B-583630544CDD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4A1FA0B-F1EE-4177-B570-204299D51151}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GemsCollections", "GemsCollections\GemsCollections.csproj", "{90E971D8-12B5-431D-BE55-FAF6A7F03179}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GemsCollectionsTests", "GemsCollectionsTests\GemsCollectionsTests.csproj", "{3265A053-0F6D-41B1-9B8B-583630544CDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

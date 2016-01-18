@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using gems_collections.Comparers;
+using GemsCollections.Comparers;
 
-namespace gems_collections.Enumerable
+namespace GemsCollections.Enumerable
 {
     public static class Enumerated
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace gems_collections.Dictionary
+namespace GemsCollections.Dictionary
 {
     /// <summary>
     /// A dictionary that will auto create entries, and remove

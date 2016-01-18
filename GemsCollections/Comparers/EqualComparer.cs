@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace gems_collections.Comparers
+namespace GemsCollections.Comparers
 {
     public class EqualComparer<T, TKey> : IEqualityComparer<T>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 
-namespace gems_collections.Dictionary
+namespace GemsCollections.Dictionary
 {
     /// <summary>
     /// Creates a different Dictionary instance for each thread that

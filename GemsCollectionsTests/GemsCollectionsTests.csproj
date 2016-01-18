@@ -6,8 +6,8 @@
     <ProjectGuid>{3265A053-0F6D-41B1-9B8B-583630544CDD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>gems_collections_test</RootNamespace>
-    <AssemblyName>gems-collections-test</AssemblyName>
+    <RootNamespace>GemsCollectionsTests</RootNamespace>
+    <AssemblyName>GemsCollectionsTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\gems-collections\gems-collections.csproj">
+    <ProjectReference Include="..\GemsCollections\GemsCollections.csproj">
       <Project>{90e971d8-12b5-431d-be55-faf6a7f03179}</Project>
-      <Name>gems-collections %28Public\gems-collections\gems-collections%29</Name>
+      <Name>GemsCollections</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

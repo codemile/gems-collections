@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace gems_collections.List
+namespace GemsCollections.List
 {
     /// <summary>
     /// An implementation of the Queue collection that drops items when the

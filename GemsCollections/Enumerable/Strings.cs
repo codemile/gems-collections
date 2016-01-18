@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace gems_collections.Enumerable
+namespace GemsCollections.Enumerable
 {
     public static class Strings
     {

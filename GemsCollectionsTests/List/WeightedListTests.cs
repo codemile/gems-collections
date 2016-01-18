@@ -1,7 +1,7 @@
-﻿using gems_collections.List;
+﻿using GemsCollections.List;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace gems_collections_test.List
+namespace GemsCollectionsTests.List
 {
     [TestClass]
     public class WeightedListTests

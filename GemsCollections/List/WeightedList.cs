@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace gems_collections.List
+namespace GemsCollections.List
 {
     /// <summary>
     /// Holds a collection of items. Each having a weight relative to
